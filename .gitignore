@@ -1,0 +1,4 @@
+node_modules/
+jats/static/bundles/
+*.sqlite3
+*.pyc

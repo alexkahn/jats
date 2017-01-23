@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}Jats</title>
+        {% block base_styles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+        {% endblock base_styles %}
+    </head>
+    <body>
+        {% block nav %}
+        {% include '_navigation.html' %}
+        {% endblock nav %}
+        {% block body %}
+        {% endblock body %}
+        {% block base_scripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        {% endblock base_scripts %}
+        {% block scripts %}
+        {% endblock scripts %}
+    </body>
+</html>
