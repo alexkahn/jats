@@ -19,10 +19,7 @@
 
   export default {
     mounted() {
-      axios.get('/api/tickets/')
-      .then((response) => {
-        this.$store.commit('getTicketList', response.data);
-      }, () => {});
+      this.$store.commit('getTicketList');
     },
     components: {
       TicketList,

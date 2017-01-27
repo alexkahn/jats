@@ -28,11 +28,30 @@ const mutations = {
         console.log(error);
     });
   },
-  updateTicket() {},
+  updateTicket(state, ticket) {
+    let url = '/api/tickets/' + ticket.id + '/';
+    axios.put(url, ticket)
+    .then((response) => {
+      let resTicket = response.data;
+      state.tickets = state.tickets.map((ticket, index) => {
+        if (ticket.id === resTicket.id) {
+          return resTicket;
+        }
+        return ticket;
+      })
+    })
+    .catch((error) => {})
+  },
   deleteTicket() {},
   getTicket() {},
   getTicketList(state, tickets) {
-    state.tickets = tickets;
+    axios.get('/api/tickets/')
+    .then((response) => {
+      state.tickets = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   },
 }
 
