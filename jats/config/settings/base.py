@@ -11,20 +11,30 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(
+    os.path.dirname(
         os.path.dirname(
             os.path.dirname(
-                os.path.abspath(__file__))))
-APP_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                os.path.abspath(__file__)))))
+APP_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+
+# Complain if we can't get an env variable.
+def get_env_var(name):
+    value = os.environ.get(name)
+    if not value:
+        raise Exception("No value found for {name}, check settings!")
+    return value
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')@$v3&uo(i^+@69!xtswdwr=@)s43-ef)ce0j+6i0e^v$er#56'
+SECRET_KEY = get_env_var('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,15 +56,12 @@ DJANGO_APPS = [
 THIRD_PARTY = [
     'webpack_loader',
     'rest_framework',
-    'django_extensions',
 ]
 
 APPS = [
     'core.apps.CoreConfig',
     'tickets.apps.TicketsConfig',
 ]
-
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -98,13 +105,10 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(conn_max_age=600),
 }
 
-
+LOGIN_REDIRECT_URL = '/'
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 

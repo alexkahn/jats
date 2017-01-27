@@ -1,4 +1,5 @@
 node_modules/
 jats/static/bundles/
+.env
 *.sqlite3
 *.pyc
