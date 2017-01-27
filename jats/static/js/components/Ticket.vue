@@ -1,23 +1,14 @@
 <template>
-    <a href="#">
-        <li :class="{'removed': ticket.complete}" class="list-group-item">
-            <div class="form-check">
-                <label class="form-check-label" :for="ticketId">
-                    <input :id="ticketId" class="form-check-input" type="checkbox" v-model="ticket.complete">
-                    {{ ticket.title }}
-                </label>
-            </div>
-        </li>
-    </a>
+  <div>
+    <p>{{ ticket.title }}</p>
+    <p>{{ ticket.notes }}</p>
+    <p>{{ ticket.completed }}</p>
+    <p>{{ ticket.assigned_to }}</p>
+  </div>
 </template>
 
 <script>
-    export default {
-        props: ['ticket'],
-        computed: {
-            ticketId() {
-                return "id_" + this.ticket.id;
-            }
-        }
-    }
+export default {
+  props: ['ticket'],
+}
 </script>

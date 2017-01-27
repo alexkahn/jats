@@ -1,7 +1,7 @@
 <template>
-  <li class="list-group-item" v-on:click.once="toggleForm">
+  <li class="list-group-item" v-on:click="toggleForm">
     <p v-show="!showForm">Add a new item</p>
-    <input v-show="showForm" :value="value" type="text" @input="onInput" autofocus>
+    <input v-show="showForm" :value="value" type="text" @keyup.enter="onInput" autofocus>
   </li>
 </template>
 
@@ -10,9 +10,14 @@ export default {
   methods: {
     onInput(event) {
       this.$emit('input', event.target.value);
+      this.value = '';
+      this.showForm = false;
     },
     toggleForm() {
-      this.showForm = !this.showForm;
+      if (this.showForm) {
+        return;
+      }
+      this.showForm = true;
     }
   },
   data() {

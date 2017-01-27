@@ -6,7 +6,7 @@
                 <p>This has been a long time coming...</p>
             </div>
             <div class="col-12">
-              <ticket-list :tickets="tickets"></ticket-list>
+              <ticket-list :tickets="this.$store.state.tickets"></ticket-list>
             </div>
         </div>
     </div>
@@ -20,12 +20,9 @@
   export default {
     mounted() {
       axios.get('/api/tickets/')
-      .then((response) => { this.tickets = response.data; }, () => {});
-    },
-    data() {
-      return {
-          tickets: []
-      }
+      .then((response) => {
+        this.$store.commit('getTicketList', response.data);
+      }, () => {});
     },
     components: {
       TicketList,

@@ -2,7 +2,7 @@
   <div>
     <ul class="list-group">
       <ticket-list-item v-for="ticket in tickets" :ticket="ticket"></ticket-list-item>
-      <add-ticket v-model="newTicket"></add-ticket>
+      <add-ticket v-model="newTicket" @input="addTicket"></add-ticket>
     </ul>
   </div>
 </template>
@@ -20,6 +20,12 @@
       return {
         newTicket: ''
       }
+    },
+    methods: {
+      addTicket() {
+        this.$store.commit('addTicket', this.newTicket);
+        this.newTicket = '';
+      },
     },
     props: ['tickets'],
   }

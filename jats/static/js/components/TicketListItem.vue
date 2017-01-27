@@ -6,16 +6,33 @@
                 {{ ticket.title }}
             </label>
         </div>
-        <a href="#"><span class="badge badge-default"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+        <!-- use the modal component, pass in the prop -->
+        <a href="#" @click="showModal = true"><span class="badge badge-default"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+        <modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">{{ ticket.title }}</h3>
+            <ticket slot="body" :ticket="ticket"></ticket>
+        </modal>
     </li>
 </template>
 
 <script>
+    import Ticket from './Ticket';
+    import Modal from './Modal';
+
     export default {
+        components: {
+            Modal,
+            Ticket,
+        },
         props: ['ticket'],
         computed: {
             ticketId() {
-                return "id_" + this.ticket.id;
+                return "#id_" + this.ticket.id;
+            }
+        },
+        data() {
+            return {
+                showModal: false,
             }
         }
     }
