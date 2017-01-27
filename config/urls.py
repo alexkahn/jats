@@ -18,8 +18,8 @@ from django.contrib import admin
 
 from rest_framework.routers import DefaultRouter
 
-from core.views import Home, App
-from tickets import views
+from jats.core.views import Home, App
+from jats.tickets import views
 
 router = DefaultRouter()
 router.register(r'tickets', views.TicketViewSet)

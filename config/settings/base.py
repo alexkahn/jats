@@ -18,13 +18,9 @@ import dj_database_url
 BASE_DIR = os.path.dirname(
     os.path.dirname(
         os.path.dirname(
-            os.path.dirname(
-                os.path.abspath(__file__)))))
-APP_DIR = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(
             os.path.abspath(__file__))))
 
+APP_DIR = os.path.join(BASE_DIR, 'jats')
 
 # Complain if we can't get an env variable.
 def get_env_var(name):
@@ -62,8 +58,8 @@ THIRD_PARTY = [
 ]
 
 APPS = [
-    'core.apps.CoreConfig',
-    'tickets.apps.TicketsConfig',
+    'jats.core.apps.CoreConfig',
+    'jats.tickets.apps.TicketsConfig',
 ]
 
 MIDDLEWARE = [

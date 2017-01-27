@@ -1,1 +1,1 @@
-web: gunicorn jats.config.wsgi --log-file -
+web: gunicorn config.wsgi:application --log-file -
