@@ -1,0 +1,9 @@
+{% extends "rest_framework/base.html" %}
+
+{% block bootstrap_theme %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" />
+{% endblock %}
+
+{% block branding %}
+    <a class="navbar-brand" href="{% url 'api-root' %}">Jats API</a>
+{% endblock branding %}
