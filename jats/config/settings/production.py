@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['jats.herokuapp.com']
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + APPS
 
