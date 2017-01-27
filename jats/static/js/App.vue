@@ -6,9 +6,7 @@
                 <p>This has been a long time coming...</p>
             </div>
             <div class="col-12">
-              <ul v-for="ticket in tickets">
-                <li>{{ ticket.title }}</li>
-              </ul>
+              <ticket-list :tickets="tickets"></ticket-list>
             </div>
         </div>
     </div>
@@ -16,9 +14,11 @@
 
 <script>
   import axios from 'axios';
+  import store from './vuex/store';
+  import TicketList from './components/TicketList';
 
   export default {
-    beforeCreate() {
+    mounted() {
       axios.get('/api/tickets/')
       .then((response) => { this.tickets = response.data; }, () => {});
     },
@@ -27,5 +27,9 @@
           tickets: []
       }
     },
+    components: {
+      TicketList,
+    },
+    store,
   }
 </script>

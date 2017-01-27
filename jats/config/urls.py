@@ -23,6 +23,7 @@ from tickets import views
 
 router = DefaultRouter()
 router.register(r'tickets', views.TicketViewSet)
+router.register(r'lists', views.TicketListViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

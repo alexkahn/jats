@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 
 
-class TicketGroup(models.Model):
+class TicketList(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL)
     name = models.CharField(max_length=70, blank=False)
     deleted = models.BooleanField(default=False)
@@ -15,7 +15,7 @@ class Ticket(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     complete = models.BooleanField(default=False, null=False)
-    ticket_group = models.ForeignKey('TicketGroup')
+    ticket_list = models.ForeignKey('TicketList')
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='created_tickets')

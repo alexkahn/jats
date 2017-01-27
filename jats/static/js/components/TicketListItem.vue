@@ -1,0 +1,22 @@
+<template>
+    <li :class="{'removed': ticket.complete}" class="list-group-item justify-content-between">
+        <div class="form-check">
+            <label class="form-check-label" :for="ticketId">
+                <input :id="ticketId" class="form-check-input" type="checkbox" v-model="ticket.complete">
+                {{ ticket.title }}
+            </label>
+        </div>
+        <a href="#"><span class="badge badge-default"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+    </li>
+</template>
+
+<script>
+    export default {
+        props: ['ticket'],
+        computed: {
+            ticketId() {
+                return "id_" + this.ticket.id;
+            }
+        }
+    }
+</script>

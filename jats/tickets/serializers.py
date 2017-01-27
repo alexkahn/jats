@@ -1,11 +1,17 @@
 from rest_framework import serializers
 
-from .models import Ticket
+from .models import Ticket, TicketList
 
 
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = (
-            'complete', 'ticket_group', 'creator', 'assigned_to', 'title',
-            'due_date', 'notes',)
+            'id', 'complete', 'ticket_list', 'creator', 'assigned_to',
+            'title', 'due_date', 'notes',)
+
+
+class TicketListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TicketList
+        fields = ('name', 'creator',)

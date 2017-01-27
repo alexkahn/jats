@@ -18,16 +18,35 @@
     </div>
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-  <label for="{{ form.username.label_for_username_id }}"></label>
-  {{ form.username.label_tag }}
-  {{ form.username }}
-  {{ form.password.label_tag }}
-  {{ form.password }}
-  <input type="hidden" name="next" value="{{ next }}" />
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  <form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <div class="form-group row">
+    <label for="username" class="col-sm-2 col-form-label">Username:</label>
+    <div class="col-sm-10">
+      <input id="username" class="form-control" maxlength="254" name="username" type="text" autofocus required/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="password" class="col-sm-2 col-form-label">Password:</label>
+    <div class="col-sm-10">
+      <input id="password" class="form-control" name="password" type="password" required />
+    </div>
+  </div>
+    <input type="hidden" name="next" value="{{ next }}" />
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    </div>
+  </div>
+  </form>
+  <div class="row">
+    <div class="col-6">
+      <a href="{% url 'password_reset' %}">Lost password?</a>
+    </div>
+    <div class="col-6 text-right">
+      <p>Don't have an account?</p>
+      <a href="">Sign up here</a>
+    </div>
+  </div>
 </div>
 {% endblock body %}
