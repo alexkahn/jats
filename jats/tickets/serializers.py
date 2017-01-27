@@ -7,11 +7,13 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = (
-            'id', 'complete', 'ticket_list', 'creator', 'assigned_to',
+            'id', 'complete', 'creator', 'assigned_to',
             'title', 'due_date', 'notes',)
 
 
 class TicketListSerializer(serializers.ModelSerializer):
+    tickets = TicketSerializer(many=True)
+
     class Meta:
         model = TicketList
-        fields = ('name', 'creator',)
+        fields = ('id', 'name', 'creator', 'tickets',)

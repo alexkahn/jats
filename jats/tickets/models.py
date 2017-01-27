@@ -6,6 +6,7 @@ class TicketList(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL)
     name = models.CharField(max_length=70, blank=False)
     deleted = models.BooleanField(default=False)
+    # default = models.BooleanField(default=False)
 
     def __str__(self):
         return "{} - {}".format(self.name, self.creator)
@@ -15,7 +16,7 @@ class Ticket(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     complete = models.BooleanField(default=False, null=False)
-    ticket_list = models.ForeignKey('TicketList')
+    ticket_list = models.ForeignKey('TicketList', related_name='tickets')
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='created_tickets')
