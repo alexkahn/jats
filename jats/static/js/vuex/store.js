@@ -19,7 +19,7 @@ const mutations = {
         id: null,
         notes: "",
         ticket_list: 1
-    }
+    };
     axios.post('/api/tickets/', newTicket)
     .then((response) => {
         state.tickets.push(response.data);

@@ -8,7 +8,7 @@ class TicketSerializer(serializers.ModelSerializer):
         model = Ticket
         fields = (
             'id', 'complete', 'creator', 'assigned_to',
-            'title', 'due_date', 'notes',)
+            'title', 'due_date', 'notes', 'ticket_list')
 
 
 class TicketListSerializer(serializers.ModelSerializer):
