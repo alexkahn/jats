@@ -1,6 +1,20 @@
-from .base import *
+from .base import *  # noqa
+import sys
 
 DEBUG = False
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
 
 ALLOWED_HOSTS = ['jats.herokuapp.com']
 
@@ -32,6 +46,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
+            'stream': sys.stdout,
         },
     },
     'loggers': {

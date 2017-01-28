@@ -1,4 +1,4 @@
-from .base import *
+from .base import *  # noqa
 
 
 DJANGO_APPS = [
@@ -11,6 +11,6 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY = THIRD_PARTY + ['django_extensions',]
+THIRD_PARTY = THIRD_PARTY + ['django_extensions', ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + APPS
