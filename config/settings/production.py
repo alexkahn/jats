@@ -35,7 +35,9 @@ LOGGING = {
             'format': '%(levelname)s %(asctime)s %(module)s '
                       '%(process)d %(thread)d %(message)s'
         },
-        'simple': '%(levelname)s %(message)s'
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        }
     },
     'handlers': {
         'mail_admins': {
