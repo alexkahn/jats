@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const projectRoot = path.join(__dirname, 'jats');
 const jsRoot = path.join(projectRoot, 'static/js');
@@ -11,10 +12,18 @@ module.exports = {
   entry: path.join(jsRoot, 'main.js'),
   output: {
     path: path.resolve('./jats/static/bundles/'),
-    filename: "[name]-[hash].js",
+    filename: '[name]-[hash].js',
   },
   plugins: [
     new BundleTracker({filename: './webpack-stats.json'}),
+    new ExtractTextPlugin("[name]-[contenthash].css"),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'Tether': 'tether',
+      'window.Tether': 'tether',
+    }),
   ],
   resolve: {
     extensions: ['', '.js', '.vue', '.json'],
@@ -31,22 +40,11 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        include: [
-          path.join(projectRoot, 'static/js')
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
+      {test: /\.vue$/, loader: 'vue'},
+      {test: /\.js$/, loader: 'babel', include: [path.join(projectRoot, 'static/js')], exclude: /node_modules/},
+      {test: /\.json$/, loader: 'json'},
+      {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
+      {test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/, loader: 'file-loader'},
     ]
   },
 }

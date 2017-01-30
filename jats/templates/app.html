@@ -1,9 +1,9 @@
 {% extends '_base.html' %}
 {% load render_bundle from webpack_loader %}
 
-{% block styles %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-{% endblock styles %}
+{% block base_styles %}
+    {% render_bundle 'main' 'css' %}
+{% endblock base_styles %}
 
 {% block nav %}{% endblock nav %}
 
@@ -11,6 +11,6 @@
 <div id="app"></div>
 {% endblock body %}
 
-{% block scripts %}
-{% render_bundle 'main' %}
-{% endblock %}
+{% block base_scripts %}
+{% render_bundle 'main' 'js' %}
+{% endblock base_scripts %}
