@@ -18,17 +18,19 @@ from django.contrib import admin
 
 from rest_framework.routers import DefaultRouter
 
-from jats.core.views import Home, App
-from jats.tickets import views
+from jats.core.views import Home
+from jats.tickets.views import TicketViewSet, TicketListViewSet
+from jats.core import views
+
 
 router = DefaultRouter()
-router.register(r'tickets', views.TicketViewSet)
-router.register(r'lists', views.TicketListViewSet)
+router.register(r'tickets', TicketViewSet)
+router.register(r'lists', TicketListViewSet)
+router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^accounts/', include('django.contrib.auth.urls')),
     url('^api/', include(router.urls)),
-    # url(r'^(?P<username>\w+)$', App.as_view(), name='app'),
     url(r'^$', Home.as_view(), name='home'),
 ]

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>{{ ticket.title }}</p>
-    <p>{{ ticket.notes }}</p>
+    <p>Notes: {{ ticket.notes }}</p>
     <p>{{ ticket.completed }}</p>
     <p>{{ ticket.assigned_to }}</p>
   </div>

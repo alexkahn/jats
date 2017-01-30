@@ -1,7 +1,14 @@
 <template>
-  <li class="list-group-item" v-on:click="toggleForm">
-    <p v-show="!showForm">Add a new item</p>
-    <input v-show="showForm" :value="value" type="text" @keyup.enter="onInput" autofocus>
+  <li class="list-group-item">
+    <button v-on:click="openForm" v-show="!showForm" class="btn btn-secondary btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;Add a new item</button>
+    <div v-show="showForm" class="input-group">
+      <input  :value="value" type="text" class="form-control" @keyup.enter.stop="onInput" autofocus>
+      <span class="input-group-btn">
+        <button class="btn btn-danger" type="button" @click="closeForm"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Cancel</button>
+      </span>
+    </div>
+      
+    </div>
   </li>
 </template>
 
@@ -13,7 +20,12 @@ export default {
       this.value = '';
       this.showForm = false;
     },
-    toggleForm() {
+    closeForm() {
+      console.log('got close form');
+      this.showForm = false;
+      console.log(this.showForm);
+    },
+    openForm() {
       if (this.showForm) {
         return;
       }
