@@ -16,11 +16,9 @@ Installation
 This application assumes a modern python development environment that
 includes:
 
-Python 3.6, virtualenv, pip, etc. Installing python 3 now means getting
-the others by default but it is the onus of the user to create a virtual
-environment tied to python 3.
+Python 3.6 and Pipenv.
 
-The other main environmental dependency is Node.js version 6.x.
+The other main environmental dependency is Node.js version 8.x.
 
 Database: Postgres 9.5
 
@@ -30,7 +28,7 @@ Database: Postgres 9.5
 
 2. Install Python dependencies (inside your activated virtualenv):
     ```
-    pip install -r requirements/dev.txt
+    pipenv install
     ```
 3. Install Node.js dependencies:
     ```
