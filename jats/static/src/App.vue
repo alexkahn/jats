@@ -23,7 +23,7 @@
 
 <script>
   import axios from 'axios';
-  import store from './vuex/store';
+  import store from './store';
   import TicketList from './components/TicketList';
   import AddList from './components/AddList';
   import Navigation from './components/Navigation';

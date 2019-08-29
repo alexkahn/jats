@@ -1,5 +1,6 @@
 node_modules/
 jats/static/bundles/
+.vscode
 .env
 *.sqlite3
 *.pyc

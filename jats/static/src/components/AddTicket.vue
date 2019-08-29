@@ -7,8 +7,6 @@
         <button class="btn btn-danger" type="button" @click="closeForm"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Cancel</button>
       </span>
     </div>
-      
-    </div>
   </li>
 </template>
 

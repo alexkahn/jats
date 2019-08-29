@@ -17,13 +17,6 @@ module.exports = {
   plugins: [
     new BundleTracker({filename: './webpack-stats.json'}),
     new ExtractTextPlugin("[name]-[contenthash].css"),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      'Tether': 'tether',
-      'window.Tether': 'tether',
-    }),
   ],
   resolve: {
     extensions: ['', '.js', '.vue', '.json'],
@@ -47,4 +40,14 @@ module.exports = {
       {test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/, loader: 'file-loader'},
     ]
   },
+  rules: [{
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        'css-loader',
+        'sass-loader'
+      ]
+    })
+  }]
 }

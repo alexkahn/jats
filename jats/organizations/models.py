@@ -3,8 +3,8 @@ from django.conf import settings
 
 
 class Administrator(models.Model):
-    organization = models.ForeignKey('organizations.Organization')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Organization(models.Model):

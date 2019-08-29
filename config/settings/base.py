@@ -155,7 +155,8 @@ STATICFILES_DIRS = (
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+        'CACHE': DEBUG,
+        'BUNDLE_DIR_NAME': '/bundles/',
+        'STATS_FILE': os.path.join(STATICFILES_DIRS[0], 'webpack-stats.json')
     }
 }

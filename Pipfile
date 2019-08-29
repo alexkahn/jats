@@ -7,7 +7,7 @@ name = "pypi"
 dj-database-url = "*"
 djangorestframework = "*"
 django-webpack-loader = "*"
-"psycopg2" = "*"
+"psycopg2-binary" = "*"
 gunicorn = "*"
 whitenoise = "*"
 Django = "*"
@@ -15,6 +15,7 @@ Django = "*"
 [dev-packages]
 ipython = "*"
 django-extensions = "*"
+pylint = "*"
 
 [requires]
-python_version = "3.6.6"
+python_version = "3.7.4"
