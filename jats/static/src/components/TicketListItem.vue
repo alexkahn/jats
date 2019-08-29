@@ -8,20 +8,25 @@
         </div>
         <!-- use the modal component, pass in the prop -->
         <a href="#" @click="showModal = true"><span class="badge badge-default"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-        <modal v-if="showModal" @close="showModal = false">
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <!-- Any other Bulma elements you want -->
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        <!-- <modal v-if="showModal" @close="showModal = false">
             <h3 slot="header">{{ ticket.title }}</h3>
             <ticket slot="body" :ticket="ticket"></ticket>
-        </modal>
+        </modal> -->
     </li>
 </template>
 
 <script>
   import Ticket from './Ticket';
-  import Modal from './Modal';
 
   export default {
     components: {
-      Modal,
       Ticket,
     },
     props: ['ticket'],

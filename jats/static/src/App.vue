@@ -1,19 +1,19 @@
 <template>
-  <div>    
+  <div>
     <navigation :currentTab="currentTab" @tabChange="switchTab"></navigation>
     <div class="container">
-      <div class="row">
-        <div class="col-12">
+      <div class="columns">
+        <div class="column is-full">
           <ul class="nav nav-pills flex-column">
           </ul>
         </div>
       </div>
       <hr>
-        <div class="row">
-          <div class="col-12" v-show="currentTab === getListId(index)" v-for="(list, index) in this.$store.state.ticket_lists">
+        <div class="columns">
+          <div class="column" v-show="currentTab === getListId(index)" v-for="(list, index) in this.$store.state.ticket_lists" v-bind:key="index">
             <ticket-list :ticketList="list"></ticket-list>
           </div>
-          <div class="col-12" v-show="currentTab === 'add-item'">
+          <div class="column" v-show="currentTab === 'add-item'">
             <add-list></add-list>
           </div>
         </div>

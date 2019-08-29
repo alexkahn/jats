@@ -1,14 +1,28 @@
 <template>
   <div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{ ticketList.name }}
+    </p>
+    <a href="#" class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </a>
+  </header>
+  <div class="card-content">
+    <div class="content">
     <ul class="list-group list-group-flush">
-      <ticket-list-item v-for="ticket in tickets" :ticket="ticket"></ticket-list-item>
+      <ticket-list-item v-for="ticket in tickets" :ticket="ticket" v-bind:key="ticket.id"></ticket-list-item>
       <add-ticket v-model="newTicket" @input="addTicket"></add-ticket>
     </ul>
-    <div class="card-block text-center">
-      <button class="btn btn-default" @click="setFilter(filters.all)">All</button>
-      <button class="btn btn-default" @click="setFilter(filters.completed)">Completed</button>
-      <button class="btn btn-default" @click="setFilter(filters.inProgress)">In Progress</button>
     </div>
+  </div>
+  <footer class="card-footer">
+    <a href="#" class="card-footer-item" @click="setFilter(filters.all)">All</a>
+    <a href="#" class="card-footer-item" @click="setFilter(filters.completed)">Completed</a>
+    <a href="#" class="card-footer-item" @click="setFilter(filters.inProgress)">In Progress</a>
+  </footer>
   </div>
 </template>
 
