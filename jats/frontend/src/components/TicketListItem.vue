@@ -23,11 +23,11 @@
 </template>
 
 <script>
-  import Ticket from './Ticket';
+  // import Ticket from './Ticket';
 
   export default {
     components: {
-      Ticket,
+      // Ticket,
     },
     props: ['ticket'],
     watch: {

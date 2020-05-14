@@ -4,13 +4,13 @@
     <div class="container">
       <div class="columns">
         <div class="column is-full">
-          <ul class="nav nav-pills flex-column">
-          </ul>
+          <ul class="nav nav-pills flex-column"></ul>
         </div>
       </div>
-      <hr>
+      <hr />
         <div class="columns">
-          <div class="column" v-show="currentTab === getListId(index)" v-for="(list, index) in this.$store.state.ticket_lists" v-bind:key="index">
+          <div
+          class="column" v-show="currentTab === getListId(index)" v-for="(list, index) in this.$store.state.ticket_lists" v-bind:key="index">
             <ticket-list :ticketList="list"></ticket-list>
           </div>
           <div class="column" v-show="currentTab === 'add-item'">
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import store from './store';
   import TicketList from './components/TicketList';
   import AddList from './components/AddList';

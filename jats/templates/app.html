@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
-{% load render_bundle from webpack_loader %}
+{% load static %}
+{% load webpack_static from webpack_loader %}
 
 {% block nav %}{% endblock nav %}
 
@@ -8,5 +9,5 @@
 {% endblock body %}
 
 {% block base_scripts %}
-{% render_bundle 'app' %}
+<script src="{% static 'js/app.3a69d407.js' %}"></script>
 {% endblock base_scripts %}
