@@ -4,3 +4,4 @@ jats/static/bundles/
 .env
 *.sqlite3
 *.pyc
+.DS_Store
