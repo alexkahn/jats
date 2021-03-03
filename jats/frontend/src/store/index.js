@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import axios from './lib/axios';
+import axios from "../lib/axios";
 
 Vue.use(Vuex);
 
@@ -57,7 +57,7 @@ export default new Vuex.Store({
       .then((response) => {
         let resTicket = response.data;
         state.ticket_lists = state.ticket_lists.map((list) => {
-          list.tickets.map((ticket, index) => {
+          list.tickets.map((ticket) => {
             if (ticket.id === resTicket.id) {
               return resTicket;
             }
@@ -66,11 +66,11 @@ export default new Vuex.Store({
           return list;
         });
       })
-      .catch((error) => {})
+      .catch((error) => { console.log(error); })
     },
     deleteTicket() {},
     getTicket() {},
-    getTicketList(state, tickets) {
+    getTicketList(state) {
       axios.get('/api/tickets/')
       .then((response) => {
         state.tickets = response.data;

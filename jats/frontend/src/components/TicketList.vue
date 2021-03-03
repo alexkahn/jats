@@ -62,11 +62,7 @@
       return {
         newTicket: '',
         filter: 'in progress',
-        filters: {
-          all: 'all',
-          completed: 'completed',
-          inProgress: 'in progress'
-        },
+        filters: filters
       }
     },
     methods: {
